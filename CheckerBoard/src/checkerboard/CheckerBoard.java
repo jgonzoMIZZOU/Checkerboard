@@ -6,31 +6,30 @@
 package checkerboard;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
  *
  * @author jeremygonzalez
  */
-public class CheckerBoard extends Application {
+public class Checkerboard extends Application {
     
     @Override
-    public void start(Stage primaryStage) {
-             
+    public void start(Stage stage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CheckerboardFXML.fxml"));
+        Parent root = loader.load();
+        Startable controller = loader.getController();
         
+//        Parent root = FXMLLoader.load(getClass().getResource("CheckerboardFXML.fxml"));
         
-        StackPane root = new StackPane();
-            
-        Scene scene = new Scene(root, 300, 250);
+        Scene scene = new Scene(root);
         
-        primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        stage.setScene(scene);
+        stage.show();
+        controller.start(stage);
     }
 
     /**
