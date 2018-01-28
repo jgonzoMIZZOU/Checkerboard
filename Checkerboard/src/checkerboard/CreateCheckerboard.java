@@ -26,6 +26,10 @@ public class CreateCheckerboard {
     private AnchorPane anchorPane;
     
         
+    public CreateCheckerboard(int numRows, int numCols, double boardWidth, double boardHeight) {
+        this(numRows, numCols, boardWidth, boardHeight, Color.RED, Color.BLACK);
+    }
+    
     // main constructor
     public CreateCheckerboard( int numRows, int numCols, double gridWidth, double gridHeight, Color lightColor, Color darkColor){
         this.numRows = numRows;
@@ -71,6 +75,18 @@ public class CreateCheckerboard {
         return anchorPane;
     }
     
+    public AnchorPane getBoard() {
+        return this.anchorPane;
+    }
+    
+    public int getNumRows() {
+        return this.numRows;
+    }
+    
+    public int getNumCols() {
+        return this.numCols;
+    }
+    
     public double getGridWidth() {
         return this.gridWidth;
     }
@@ -79,4 +95,19 @@ public class CreateCheckerboard {
         return this.gridHeight;
     }
     
+    public Color getLightColor() {
+        return this.lightColor;
+    }
+    
+    public Color getDarkColor() {
+        return this.darkColor;
+    }
+    
+    public double getRectWidth() {
+        return this.rectWidth;
+    }
+    
+    public double getRectHeight() {
+        return this.rectHeight;
+    }
 }

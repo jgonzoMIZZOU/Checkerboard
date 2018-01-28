@@ -59,10 +59,17 @@ public class CheckerboardFXMLController implements Initializable, Startable {
         
         // this is a listener that will listen to when the stage changes size 
         ChangeListener<Number> listener = (ObservableValue<? extends Number> observable, Number oldValue, final Number newValue) -> {
-            vBox.getChildren().remove(anchorPane);
+            if(lightColor == Color.RED && darkColor == Color.BLACK) {
+                vBox.getChildren().remove(anchorPane);
+                checkerBoard = new CreateCheckerboard(numRows, numCols, vBox.getWidth(), vBox.getHeight() - 22);
+                anchorPane = checkerBoard.build();
+                vBox.getChildren().add(anchorPane);
+            } else {
+                vBox.getChildren().remove(anchorPane);
             checkerBoard = new CreateCheckerboard(numRows, numCols, vBox.getWidth(), vBox.getHeight() - 22, lightColor, darkColor);
             anchorPane = checkerBoard.build();
             vBox.getChildren().add(anchorPane);
+            } 
         };
         
         this.vBox.widthProperty().addListener(listener);
@@ -107,9 +114,7 @@ public class CheckerboardFXMLController implements Initializable, Startable {
             lightColor = colors[0];
              darkColor = colors[1];
         }
-        CreateCheckerboard newBoard = new CreateCheckerboard(numRows, numCols, anchorPane.getWidth(), anchorPane.getHeight(), lightColor, darkColor);
-        anchorPane = newBoard.build();
-        vBox.getChildren().add(anchorPane);
+        newBoardColor(lightColor, darkColor);
         
     }
     
@@ -125,6 +130,12 @@ public class CheckerboardFXMLController implements Initializable, Startable {
         CreateCheckerboard newBoard = new CreateCheckerboard(row, col, anchorPane.getWidth(), anchorPane.getHeight(), lightColor, darkColor);
         anchorPane = newBoard.build();
         vBox.getChildren().add(anchorPane);
+    }
+    
+    private void newBoardColor(Color lightColor, Color darkColor) {
+        CreateCheckerboard newBoard = new CreateCheckerboard(numRows, numCols, anchorPane.getWidth(), anchorPane.getHeight(), lightColor, darkColor);
+        anchorPane = newBoard.build();
+        vBox.getChildren().add(anchorPane); 
     }
     
 }

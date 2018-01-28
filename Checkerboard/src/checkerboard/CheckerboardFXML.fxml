@@ -20,7 +20,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Color">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#handleColor" text="Blue" />
+              <MenuItem mnemonicParsing="false" onAction="#handleColor" text="Toggle Color" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
